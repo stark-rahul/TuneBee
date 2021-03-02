@@ -1,0 +1,47 @@
+//
+//  AuthManager.swift
+//  tuneBee
+//
+//  Created by Rahul on 23/02/21.
+//
+
+import Foundation
+
+final class AuthManager {
+    static let shared = AuthManager()
+    
+    struct Constants {
+        static let clientID = "e05d4a50dd5c45b0ba354d86737cb862"
+        static let clientSecret = "e0edf5a259074ad69135cacac034ce09"
+    }
+    
+    private init() {}
+    
+    public var signInURL: URL? {
+        let scopes = "user-read-private"
+        let redirectURI = "https://www.iosacademy.io"
+        let base = "https://accounts.spotify.com/authorize"
+        let string = "\(base)?response_type=code&client_id=\(Constants.clientID)&scope=\(scopes)&redirect_uri=\(redirectURI)&show_dialog=TRUE"
+        return URL(string: string)
+    }
+    
+    var isSignedIn: Bool {
+        return false
+    }
+    private var accessToken: String? {
+        return nil
+        
+    }
+    private var refreshToken: String? {
+        return nil
+        
+    }
+    private var tokenExpirationDate: Date? {
+        return nil
+        
+    }
+    
+    private var shouldRefreshToken: Bool? {
+        return nil
+    }
+}
